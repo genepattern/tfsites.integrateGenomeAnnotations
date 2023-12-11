@@ -39,29 +39,27 @@ TBD
 
 ## Input Files
 
-1.  input data.  Tab delimited file [ define format and contents in detail ] 
+1. input data.  Tab delimited file [ define format and contents in detail ] 
     
 2. bed file. Bed file to overlap with genomic coordinates in input file. 
 
        
 ## Output Files
 
-  1.PBM: <output prefix>.pbm.tsv.  Tab-separated text file TBD.
+  1.TSV: <input.data_basename>.bed-overlap.tsv.  Tab-separated text file TBD.
     e.g. 
 ```
-seq     rel_aff
-AAAAAAAA        0.147
-AAAAAAAC        0.107
-AAAAAAAG        0.13
-AAAAAAAT        0.125
-AAAAAACA        0.123
+chrom	pos-1idx	ref	alt	info    <first bed file name> <second bed file name>	
+chr1	1255143	C	T	1.436e-08	1	1
+chr1	1259093	T	A	1.056e-08	1	0
+chr1	1259424	T	C	3.171e-09	0	1
 
 ```
     
   
 ## Example Data
 
-[Example input data is available on github](https://github.com/genepattern/tfsites.annotateTfSites/data)
+[Example input data is available on github](https://github.com/genepattern/tfsites.integrateGenomeAnnotations/gpunit/data)
     
 ## References
 
