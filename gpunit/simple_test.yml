@@ -1,0 +1,19 @@
+# Run this gpunit localy by calling:
+# ant -f ${GPUNIT_HOME}/build.xml -Dgpunit.diffStripTrailingCR="--strip-trailing-cr" -Dgp.host="127.0.0.1" -Dgp.url="http://127.0.0.1:8080" -Dgp.user="edjuaro@gmail.com" -Dgp.password="" -Dgpunit.testfolder=`pwd` gpunit
+# OR using gp-beta-ami:
+# ant -f ${GPUNIT_HOME}/build.xml -Dgpunit.diffStripTrailingCR="--strip-trailing-cr" -Dgp.host="beta.genepattern.org" -Dgp.url="https://beta.genepattern.org" -Dgp.user="**USERNAME**" -Dgp.password="**PUT_PASSWORD_HERE" -Dgpunit.testfolder=`pwd` gpunit
+
+#
+# Note: this test uses a custom diff command
+#
+
+name: "tfsites.IntegrateGenomeAnnotations - Basic test"
+module: tfsites.IntegrateGenomeAnnotations
+params:
+    input.data: "data/05-input_gwas.tsv"
+    zero.pos: "FALSE"
+    bed.file: ["https://datasets.genepattern.org/data/module_support_files/tfsites/05-input_intervals1.bed","https://datasets.genepattern.org/data/module_support_files/tfsites/05-input_intervals2.bed"]
+    out.filename:  "05-output_ets-bed-overlap.tsv"
+assertions:
+    jobStatus: success
+
