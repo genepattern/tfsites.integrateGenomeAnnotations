@@ -73,7 +73,7 @@ p4_value=
 
 privacy=public
 quality=development
-src.repo=
+src.repo=https://github.com/genepattern/tfsites.IntegrateGenomeAnnotations
 taskDoc=
 taskType=Transciption factor analysis
 userid=ted
