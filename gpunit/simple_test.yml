@@ -10,10 +10,10 @@
 name: "tfsites.IntegrateGenomeAnnotations - Basic test"
 module: tfsites.IntegrateGenomeAnnotations
 params:
-    input.data: "data/05-input_gwas.tsv"
-    zero.pos: "FALSE"
-    bed.file: ["https://datasets.genepattern.org/data/module_support_files/tfsites/05-input_intervals1.bed","https://datasets.genepattern.org/data/module_support_files/tfsites/05-input_intervals2.bed"]
-    out.filename:  "05-output_ets-bed-overlap.tsv"
+    genotypic.data.input: "data/05-input_gwas.tsv"
+    zero.index.genomic.coordinates: "FALSE"
+    BED.genomic.interval.data: ["https://datasets.genepattern.org/data/module_support_files/tfsites/05-input_intervals1.bed","https://datasets.genepattern.org/data/module_support_files/tfsites/05-input_intervals2.bed"]
+    genotypic.&.BED.overlap.filename:  "05-output_ets-bed-overlap.tsv"
 assertions:
     jobStatus: success
 
