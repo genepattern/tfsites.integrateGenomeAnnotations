@@ -30,7 +30,7 @@ The input file containing a list of mutations is converted from TSV to BED forma
 - <span style="color: red;">*</span>**BED Genomic Interval Data (.bed)**
     -  This file contains a list of genomic intervals of interest. 
 - <span style="color: red;">*</span>**Genotypic and BED Overlap (.tsv)**
-    - Out file name for the annotated PBM data
+    - Out file name for the annotated PBM (protein-binding microarray) data
  
 ### Other Parameters
 
