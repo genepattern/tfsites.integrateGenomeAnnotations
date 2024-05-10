@@ -3,8 +3,7 @@
 JVMLevel=
 LSID=
 author=
-commandLine=python /build/tfsites-webportal/09-integrateGenomeAnnotations/09-integrateGenomeAnnotations.py -g <genotypic.data.input> -o <genotypic.&.BED.overlap.output.filename> -z <zero.indexed.genomic.coordinates> <BED.genomic.interval.data>       
-
+commandLine=python /build/tfsites-webportal/09-integrateGenomeAnnotations/09-integrateGenomeAnnotations.py -g <genotypic.data> -o <genotypic.&.BED.overlap.output.filename> -z <zero.indexed.genomic.coordinates> <BED.genomic.interval.data>       
 cpuType=any
 description=Checks whether overlap exists between a list of mutations in a genotypic dataset and BED files containing genomic regions of interest. For each mutation, it is reported whether or not the region of each mutation overlaps with the regions contained within each BED file.
 documentationUrl=https://genepattern.github.io/tfsites.IntegrateGenomeAnnotations/v1/
@@ -22,7 +21,7 @@ p1_default_value=
 p1_description=A .tsv file containing a list of mutations from a genotypic experiment, along with their genomic position. It can also contain columns with other information, such as the statistical association between the mutation and a phenotype. 
 p1_fileFormat=.tsv
 p1_flag=
-p1_name=genotypic.data.input
+p1_name=genotypic.data
 p1_numValues=1..1
 p1_optional=
 p1_prefix=
@@ -46,8 +45,8 @@ p2_value=FALSE\=FALSE;TRUE\=TRUE
 
 p3_MODE=
 p3_TYPE=TEXT
-p3_default_value=<genotypic.data.input_basename>_overlap.tsv
-p3_description=Output file name for the annotated PBM data.
+p3_default_value=<genotypic.data_basename>_overlap.tsv
+p3_description=Name of the output file containing the original genotypic file, along with additional columns that indicate whether overlap exists between each mutation and the genomic intervals from the genotypic data file(s). For each input BED file, there is one column appended to the original genotypic data file that indicates whether or not overlap exists. 
 p3_fileFormat=
 p3_flag=
 p3_name=genotypic.&.BED.overlap.output.filename
@@ -61,7 +60,7 @@ p3_value=
 p4_MODE=IN
 p4_TYPE=FILE
 p4_default_value=
-p4_description=A BED file containing a list of genomic intervals of interest.
+p4_description=One or more BED file containing a list of genomic intervals of interest.
 p4_fileFormat=.bed
 p4_flag=
 p4_name=BED.genomic.interval.data
@@ -76,6 +75,6 @@ privacy=public
 quality=development
 src.repo=https://github.com/genepattern/tfsites.IntegrateGenomeAnnotations
 taskDoc=
-taskType=Transciption factor analysis
+taskType=Transcription factor analysis
 userid=ted
 version=Draft initial release

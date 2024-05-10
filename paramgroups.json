@@ -1,0 +1,21 @@
+[
+    {
+        "name": "Inputs and Outputs",
+        "description": "",
+        "hidden": false,
+        "parameters": [
+            "genotypic.data",
+            "BED.genomic.interval.data",
+            "genotypic.&.BED.overlap.output.filename"
+        ]
+    },
+    {
+        "name": "Other Parameters",
+        "description": "",
+        "hidden": false,
+        "parameters": [
+            "zero.indexed.genomic.coordinates"
+        ]
+    }
+
+]

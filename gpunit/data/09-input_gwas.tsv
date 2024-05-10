@@ -1,4 +1,4 @@
-chrom	pos	ref	alt	info
+Chrom	Pos	Ref	Alt	Info
 chr1	1255143	C	T	1.436e-08
 chr1	1259093	T	A	1.056e-08
 chr1	1259424	T	C	3.171e-09
