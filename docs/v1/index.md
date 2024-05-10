@@ -25,12 +25,12 @@ The input file containing a list of mutations is converted from TSV to BED forma
 
 ### Inputs and Outputs 
 
-- <span style="color: red;">*</span>**Genotypic Data Input (.tsv)**
+- <span style="color: red;">*</span>**Genotypic Data (.tsv)**
     - This file contains a list of mutations from a genotypic experiment, along with their genomic position. It can also contain columns with other information, such as the statistical association between the mutation and a phenotype. 
 - <span style="color: red;">*</span>**BED Genomic Interval Data (.bed)**
-    -  This file contains a list of genomic intervals of interest. 
+    -  One or more BED files containing a list of genomic intervals of interest. 
 - <span style="color: red;">*</span>**Genotypic and BED Overlap (.tsv)**
-    - Out file name for the annotated PBM (protein-binding microarray) data
+    - Name of the output file containing the original genotypic file, along with additional columns that indicate whether overlap exists between each mutation and the genomic intervals from the genotypic data file(s). For each input BED file, there is one column appended to the original genotypic data file that indicates whether or not overlap exists.
  
 ### Other Parameters
 
@@ -40,7 +40,7 @@ The input file containing a list of mutations is converted from TSV to BED forma
 
 ## Input Files
 
-1. Genotypic Data Input (.tsv)
+1. Genotypic Data (.tsv)
 - Can optionally contain other columns, but the five columns below must be listed first
 - Columns:
     - `Chrom:` name of the chromosome
@@ -109,5 +109,6 @@ chr1	1259424	        T	 C      3.171e-09     0                    1
     
 ## Version Comments
 
-- **1.0.0** (2023-11-27): Initial draft of document scaffold.
+- **1.0.2** (2024-05-10): Draft updated for new parameter names and descriptions.
 - **1.0.1** (2024-02-02): Draft completed.
+- **1.0.0** (2023-11-27): Initial draft of document scaffold.
