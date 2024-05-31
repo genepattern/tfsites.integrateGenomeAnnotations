@@ -13,7 +13,7 @@
 
 ## Introduction
 
-`integrateGenomeAnnotations` checks whether overlap exists between a list of mutations in a genotypic dataset and BED files containing genomic regions of interest. For each mutation, it is reported whether or not the region of each mutation overlaps with the regions contained within each BED file. 
+`integrateGenomeAnnotations` checks whether overlap exists between a list of single-nucleotide mutations in a genotypic dataset and BED files containing genomic regions of interest. For each mutation, it is reported whether or not the region of each mutation overlaps with the regions contained within each BED file. 
 
 ## Methodology
 
@@ -25,80 +25,82 @@ The input file containing a list of mutations is converted from TSV to BED forma
 
 ### Inputs and Outputs 
 
-- <span style="color: red;">*</span>**Genotypic Data (.tsv)**
+- <span style="color: red;">*</span>**genotypic data (.tsv)**
     - This file contains a list of mutations from a genotypic experiment, along with their genomic position. It can also contain columns with other information, such as the statistical association between the mutation and a phenotype. 
-- <span style="color: red;">*</span>**BED Genomic Interval Data (.bed)**
+- <span style="color: red;">*</span>**BED genomic interval data (.bed)**
     -  One or more BED files containing a list of genomic intervals of interest. 
-- <span style="color: red;">*</span>**Genotypic and BED Overlap (.tsv)**
+- <span style="color: red;">*</span>**genotypic and BED overlap (.tsv)**
     - Name of the output file containing the original genotypic file, along with additional columns that indicate whether overlap exists between each mutation and the genomic intervals from the genotypic data file(s). For each input BED file, there is one column appended to the original genotypic data file that indicates whether or not overlap exists.
  
 ### Other Parameters
 
-- **Zero Index Genomic Coordinates (boolean)**
+- **zero index genomic coordinates (boolean)**
     - If `True`, the genomic coordinates in the input eQTL file are 0-indexed (sequence numbering starts at 0). If `False`, they are 1-indexed (sequence numbering starts at 1).
 
 
 ## Input Files
 
-1. Genotypic Data (.tsv)
+1. genotypic data (.tsv)
 - Can optionally contain other columns, but the five columns below must be listed first
 - Columns:
-    - `Chrom:` name of the chromosome
-    - `Pos:` genomic coordinate indicating the position of the mutation
-    - `Ref:` the wildtype sequence 
-    - `Alt:` the mutated sequence
-    - `P_value:` statistical association between the mutation and a phenotype
+    - `Chromosome:` name of the chromosome
+    - `Position:` genomic position of the mutation
+    - `Ref:` reference nucleotide
+    - `Alt:` alternate nucleotide
+    - `P-value:` statistical association between the mutation and a phenotype
 
 ```
-chrom    pos      ref  alt  p_value
-chr1     1255143  C    T    1.43e-08
-chr1     1259093  T    A    1.05e-08
-chr1     1259424  T    C    3.17e-09
+Chromosome    Position     Ref       Alt     P-value
+chr1          1255143      C         T       1.43e-08
+chr1          1258207      T         A       1.24e-09
+chr1          1259091      C         A       1.75e-08
+chr1          1259093      T         A       1.05e-08
+chr1          1259424      T         C       3.17e-09
 ```
     
-2. BED Genomic Interval Data (.bed)
+2. BED genomic interval data (.bed)
 - Can provide more than one file 
 - Columns:
-    - `Chrom:` name of the chromosome
-    - `Start:` starting position of the genomic interval
-    - `End:` ending position of the genomic interval
+    - `Chromosome:` name of the chromosome
+    - `Start:` start coordinate of genomic interval
+    - `End:` end coordinate of genomic interval
 
 ```
-chrom   start    end   
-chr1	1255130	 1255150
-chr1	1259080	 1259099
-chr1	1259410	 1259420
-chr1	1281630	 1281645
-chr1	1351740	 1351750
+Chromosome   Start       End   
+chr1	     1255130	 1255150
+chr1	     1259080	 1259099
+chr1	     1259410	 1259420
+chr1	     1281630	 1281645
+chr1	     1351740	 1351750
 ```
 
 ```
-chrom   start    end  
-chr1	1255135	 1255145
-chr1	1259420	 1259428
-chr1	1281200	 1281220
-chr1	1325350	 1325365
-chr1	1351740	 1351750
+Chromosome   Start       End  
+chr1         1255135	 1255145
+chr1         1259420	 1259428
+chr1         1281200	 1281220
+chr1         1325350	 1325365
+chr1         1351740	 1351750
 ```
 
        
 ## Output Files
 
-  1.Genotypic and BED Overlap (.tsv)
-- Columns:
-    - `Chrom:` name of the chromosome
-    - `Pos:` genomic coordinate indicating the position of the mutation
-    - `Ref:` the wildtype sequence
-    - `Alt:` the mutated sequence
-    - `P_value:` statistical association between the mutation and a phenotype
-    - `Overlap-[BED Genomic Interval Data #1]:` whether overlap exists between the mutations from the genotypic dataset and any genomic intervals contained in BED Genomic Interval Data #1 (1 if there is an overlap, 0 if there is no overlap)
-    - `Overlap-[BED Genomic Interval Data #2]:` whether overlap exists between the mutations from the genotypic dataset and any genomic intervals contained in BED Genomic Interval Data #2 (1 if there is an overlap, 0 if there is no overlap)
+1. genotypic and BED overlap (.tsv)
+- Columns
+    - `Chromosome:` name of the chromosome
+    - `Position:` genomic position of the mutation
+    - `Ref:` reference nucleotide
+    - `Alt:` alternate nucleotide
+    - `P-value:` statistical association between genotype and phenotype
+    - `Overlap-{name of BED file #1}:` whether overlap exists between the MPRA data and BED file #1 
+    - `Overlap-{name of BED file #2}:` whether overlap exists between the MPRA data and BED file #2
   
 ```
-chrom	pos-1idx	ref	 alt	info          overlap-file1.bed    overlap-file2.bed	
-chr1	1255143	        C	 T      1.436e-08     1                    1
-chr1	1259093	        T	 A      1.056e-08     1                    0
-chr1	1259424	        T	 C      3.171e-09     0                    1
+Chromosome   Position     Ref    Alt    P-value        Overlap-file1.bed    Overlap-file2.bed	
+chr1	     1255143	  C      T      1.436e-08      1                    1
+chr1	     1259093	  T      A      1.056e-08      1                    0
+chr1	     1259424	  T      C      3.171e-09      0                    1
 ```
     
   
