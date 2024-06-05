@@ -34,7 +34,7 @@ The input file containing a list of mutations is converted from TSV to BED forma
  
 ### Other Parameters
 
-- **zero index genomic coordinates (boolean)**
+- <span style="color: red;">*</span>**zero index genomic coordinates (boolean)**
     - If `True`, the genomic coordinates in the input genotypic file are 0-indexed (sequence numbering starts at 0). If `False`, they are 1-indexed (sequence numbering starts at 1).
 
 
